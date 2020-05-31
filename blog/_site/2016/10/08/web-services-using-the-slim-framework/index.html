@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Web Services using the Slim Framework &#8211; Marwen Doukh</title>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="This is my personal blog. Marwen Doukh">
+    <meta name="robots" content="all">
+    <meta name="author" content="Marwen Doukh">
+    <meta name="keywords" content="Tutorial">
+    <link rel="canonical" href="http://localhost:4000/2016/10/08/web-services-using-the-slim-framework/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Marwen Doukh" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css?202005310230" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Web Services using the Slim Framework">
+    <meta property="og:description" content="This is my personal blog. Marwen Doukh">
+    <meta property="og:url" content="http://localhost:4000/2016/10/08/web-services-using-the-slim-framework/">
+    <meta property="og:site_name" content="Marwen Doukh">
+    
+    <meta property="og:image" content="http://localhost:4000/images/me.jpeg">
+    
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+    <meta name="twitter:title" content="Web Services using the Slim Framework" />
+    <meta name="twitter:description" content="This is my personal blog. Marwen Doukh" />
+    <meta name="twitter:url" content="http://localhost:4000/2016/10/08/web-services-using-the-slim-framework/" />
+    
+    <meta name="twitter:image" content="http://localhost:4000/images/me.jpeg" />
+    
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+</head>
+
+<body class="site animated fade-in-down">
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Marwen Doukh</a>
+      <nav class="site-nav">
+        
+
+
+
+    
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+
+    
+
+
+      </nav>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Web Services using the Slim Framework</h1>
+  <span class="post-meta">Oct 8, 2016 |</span>
+  
+  <span class="post-meta small">
+  
+    3 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <p><img class=" size-full wp-image-974 aligncenter" src="/assets/slim-framework.png" alt="slim-framework" width="1791" height="409" /></p>
+<p>Hello !</p>
+<p>In this tutorial , you'll find out how to create your own web service using the Slim Framework and why it's important to create a web service.</p>
+<p>Let's get started !</p>
+<p><!--more--></p>
+<p>if you are familiar with the web services terms , you can skip the definitions and start developing your first web service <a href="#start-developing">here</a> .</p>
+<h2>What's a web service ?</h2>
+<p>A web service is a secure way to offer the database data to other applications .I’d like to illustrate my point with an example : Imagine you have a database that contains many personal data of your users and you would like to give access to some data to other developers, How can you do it ?</p>
+<p>Without the web services , you have to give the developers the database server address , the database login and password , then the developers will have full access to your database which is a bad solution !</p>
+<p>💡 The solution is creating a web service that offers only the data needed , so the developers will not get your database credentials thus they will not have full access to your database .</p>
+<p>You get the point .</p>
+<h2>Introduction to Slim Framework</h2>
+<p>Slim framework is a great PHP framework that will let you create your own web service without spending too much time .It's open source and well documented .</p>
+<h2> JSON</h2>
+<p>To put it simply , JSON is a text based format used to transmit data between two different apps . So , our data will be structured in a universal format in such a way that others apps will be able to process it easily .</p>
+<p>Too much annoying details ? So let's start developing our first web service .</p>
+<h2></h2>
+<h2 id="start-developing">Develop your web service 😎</h2>
+<ol>
+<ol>
+<li>
+<h6>Getting the data (JSON)</h6>
+<p>First, we should define our route , in this example when we visit yourdomain/cars it will call the method 'getCars'</li>
+</ol>
+</ol>
+<pre><code>
+$app-&gt;get('/cars','getCars'); 
+</code></pre>
+<p>Then we should define our 'getCars' method which will return all the cars contained in the Database .To do that , we have to write our Sql query</p>
+<pre><code>
+$sql = "SELECT manufacturer,color FROM car ORDER BY id";
+</code></pre>
+<p>Then , execute the query</p>
+<pre><code>
+$db = getDB();
+$stmt = $db-&gt;query($sql);  
+$cars = $stmt-&gt;fetchAll(PDO::FETCH_OBJ);
+</code></pre>
+<p>and finally return the data as JSON with this line of code</p>
+<pre><code>
+echo '{"Cars": ' . json_encode($cars) . '}';
+</code></pre>
+<p>The 'getCars' method will be :</p>
+<pre><code>
+function getCars() {
+	$sql = "SELECT manufacturer,color FROM car ORDER BY id";
+	try {
+		$db = getDB();
+		$stmt = $db-&gt;query($sql);  
+		$cars = $stmt-&gt;fetchAll(PDO::FETCH_OBJ);
+		$db = null;
+		echo '{"Cars": ' . json_encode($cars) . '}';
+	} catch(PDOException $e) {
+	    echo "Error !"; 
+	}
+}
+
+</code></pre>
+<p>Let's test it ! go to the browser and visit yourdomain/cars , it will show you this</p>
+<pre><code>
+{"Cars": [{"manufacturer":"Volkswagen","color":"Black"},{"manufacturer":"BMW","color":"Grey"},{"manufacturer":"Audi","color":"White"}]}
+</code>
+</pre>
+<ol>
+<li>
+<h6>Insert data</h6>
+</li>
+</ol>
+<p>To insert data to the database , we'll use the HTTP POST method .We should first define the route</p>
+<pre><code>
+$app-&gt;post('/newcar', 'addCar');
+</code></pre>
+<p>Then we should define our 'addCar' method. In this method we will start first by getting the parameters sent by the POST method</p>
+<pre><code>
+ $manufacturer = $req-&gt;params('manufacturer'); 
+ $color = $req-&gt;params('color'); 
+</code></pre>
+<p>Then write our Sql query</p>
+<pre><code>
+ $sql = "INSERT INTO car (`manufacturer`,`color`) VALUES (:manufacturer, :color);";
+</code></pre>
+<p>And finally , execute the query</p>
+<pre><code>
+$db = getDB();
+$stmt = $db-&gt;prepare($sql);
+    
+$stmt-&gt;bindParam("manufacturer", $manufacturer);
+$stmt-&gt;bindParam("color",$color);
+ 
+$stmt-&gt;execute();
+</code></pre>
+<p>So , our 'addCar' method will be</p>
+<pre><code>
+function addCar() {
+    global $app;
+    $req = $app-&gt;request(); 
+    
+    $manufacturer = $req-&gt;params('manufacturer'); 
+    $color = $req-&gt;params('color'); 
+    
+  $sql = "INSERT INTO car (`manufacturer`,`color`) VALUES (:manufacturer, :color);";
+  
+  try {
+    $db = getDB();
+    $stmt = $db-&gt;prepare($sql);
+    
+      $stmt-&gt;bindParam("manufacturer", $manufacturer);
+      $stmt-&gt;bindParam("color",$color);
+ 
+      $stmt-&gt;execute();
+      $db = null;
+  } catch(PDOException $e) {
+      echo "Error !";
+  }
+}
+</code></pre>
+<p>To test , run this command in your terminal (cmd.exe if you are using Windows)</p>
+<pre><code>
+curl --data "manufacturer=Mercedes&amp;color=Black"  http://localhost/WebService-SlimFramework/webservice.php/newcar
+
+</code>
+</pre>
+<p>🎉 Congratulations  ! the data was successfully added to the database</p>
+<p>[caption id="attachment_1030" align="aligncenter" width="360"]<img class=" size-full wp-image-1030 aligncenter" src="/assets/slim-framework-tutorial.png" alt="slim-framework-tutorial" width="360" height="146" /> Data successfully inserted[/caption]</p>
+<h2>To conclude</h2>
+<p>Slim framework is a robust and secure micro framework that you can use for many projects that needs to connect to databases. It's a framework that keeps getting better day after day , I hope that you liked it.<br />
+Thank you for following the tutorial , I hope you enjoyed it  . Keep in touch to see my next tutorials</p>
+<p><span style="font-size:xx-large;">To download the full source code visit my Github repository <a href="https://github.com/marwendoukh/WebService-SlimFramework" target="_blank">here</a></span></p>
+
+</article>
+
+
+
+
+  <div class="py2 post-footer">
+  <p>
+    
+  </p>
+</div>
+
+
+
+
+
+
+  <h3 class="related-post-title">Related Posts</h3>
+  <ul class="related-posts">
+    
+    <li>
+      <a href="/2020/03/27/covid19-letat-de-la-connexion-internet-en-tunisie/" class="post-link">
+          #Covid19 : L’état de la connexion Internet en Tunisie
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2019/08/10/nutzen-keine-fb-app-weder-fb-messenger-meine-erfahrung/" class="post-link">
+          Nutzen Keine FB App, weder FB Messenger  : Meine Erfahrung
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/12/30/ilhem-ks-ruhe-in-frieden/" class="post-link">
+          Ilhem KS: Ruhe in Frieden
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/10/14/je-mehr-ich-weis-desto-mehr-weis-ich-dass-ich-nichts-weis/" class="post-link">
+          Je mehr ich weiß, desto mehr weiß ich, dass ich nichts weiß.
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/08/26/announcement-pulluptorefresh-is-here/" class="post-link">
+          Announcement: PullUpToRefresh is here !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/08/19/wir-sollten-den-plastikverbrauch-jetzt-begrenzen-oder-wir-werden-sterben/" class="post-link">
+          Wir sollten den plastikverbrauch jetzt begrenzen, oder ... Wir werden STERBEN !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/07/25/meine-gedanken-uber-das-neue-ios-12/" class="post-link">
+          Meine Gedanken über das neue iOS 12 !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/01/04/your-privacy-tools-for-2018/" class="post-link">
+          Your privacy tools for 2018
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2017/10/02/classroom-chat-is-ready/" class="post-link">
+          Say Hi to Classroom chat !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2017/10/01/mozillas-hard-work-is-paying-off/" class="post-link">
+          Mozilla's hard work is paying off
+      </a>
+    </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <div class="left">
+      <small>
+        &copy; 2020 Marwen Doukh
+      </small>
+    </div>
+    
+  </div>
+</footer>
+<script type="text/javascript">
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js")
+    }
+</script>
+
+</body>
+</html>

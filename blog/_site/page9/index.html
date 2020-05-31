@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Marwen Doukh</title>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="This is my personal blog. Marwen Doukh">
+    <meta name="robots" content="all">
+    <meta name="author" content="Marwen Doukh">
+    
+    <link rel="canonical" href="http://localhost:4000/page9/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Marwen Doukh" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css?202005310230" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Marwen Doukh">
+    <meta property="og:description" content="This is my personal blog. Marwen Doukh">
+    <meta property="og:url" content="http://localhost:4000/page9/">
+    <meta property="og:site_name" content="Marwen Doukh">
+    
+    <meta property="og:image" content="http://localhost:4000/images/me.jpeg">
+    
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+    <meta name="twitter:title" content="Marwen Doukh" />
+    <meta name="twitter:description" content="This is my personal blog. Marwen Doukh" />
+    <meta name="twitter:url" content="http://localhost:4000/page9/" />
+    
+    <meta name="twitter:image" content="http://localhost:4000/images/me.jpeg" />
+    
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+</head>
+
+<body class="site animated fade-in-down">
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Marwen Doukh</a>
+      <nav class="site-nav">
+        
+
+
+
+    
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+
+    
+
+
+      </nav>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+<div class="home">
+  
+    <div class="posts">
+      
+        <div class="post py3">
+          <p class="post-meta">
+	    
+	      Sep 9, 2016
+	    
+	  </p>
+          <a href="/2016/09/09/why-end-to-end-encryption-is-important/" class="post-link"><h3 class="h1 post-title">Why End-To-End encryption is important ?</h3></a>
+          <span class="post-summary">
+            
+              <p><img class=" size-full wp-image-793 aligncenter" src="/assets/end-to-end-encryption.png" alt="end-to-end-encryption" width="980" height="550" /></p>
+<p>Hi everyone !</p>
+<p>In this post , I will talk about the importance of the End-To-End encryption nowadays.</p>
+<p>So , what is it exactly ?  how can we use it ?  And why it's important ?</p>
+<h2></h2>
+<p><!--more--></p>
+<h2>Why it's important  ?</h2>
+<p>Nowadays , we use the internet for many purposes : at work , for personal conversations , for  business calls , and so on ...</p>
+<p>Day after day , we discuss more and more online instead of real life , we discuss about private things , we discuss about our future , about the things that matters to us ... thus we generate a tremendous amount of Gigabits (a unit to measure data size) that we don't want that big companies gain access to it , like : Google , Microsoft , Facebook ...</p>
+<p>It's true that encryption used by messaging apps,which is encrypting data only in transit , could protect our privacy , but it's not enough since the messaging app owner could read the data easily. Don't worry I'll explain more .</p>
+<p>For example : if you are using Hangouts (a messaging App developed by Google) and you send a message to your lovely friend , when you hit the "send" button , your message will be encrypted .After that , your message (encrypted) travels over the internet  from router A to router B then to router C ... In this phase , your message couldn't be read by hackers or the internet service provider ... Then , your message come safely to the Hangouts server which will save it and then route it to your friend's device. After receiving the message , your friend's device will decrypt it and show it to your friend . This is what happens without diving into the details.</p>
+<p>To put it simply , all your messages are saved in Google's servers and it can be accessed at any time.</p>
+<p>What's the solution then ?</p>
+<p>Use the End-To-End encrypted messaging apps , because the keys (of the encryption) are generated locally by your device and your message is encrypted using these keys . Therefore,  no one can decrypt your data since you are the only persons who own the decryption keys (you and the receiver).</p>
+<h2>End-To-End encryption ?</h2>
+<p>The End-To-End encryption (or end to end encryption) is a way of encrypting data so that only the sender and the receiver could read the content of this data. NO ONE ELSE could access the content even your ISP (Internet Service Provider) , a hacker trying to intercept the data ...</p>
+<p>This is what happens :</p>
+<p>you write a message -&gt; your device will generate the encryption keys  -&gt; your message will be encrypted -&gt; the messaging server receive your message -&gt; the server deliver the message to your friend -&gt; your friend's device decrypt the message -&gt; your friend is able now to read it.</p>
+<p>But ... Are you wondering how your friend's device is able to decrypt the message "without having the keys " !!!</p>
+<p>Of course he does have the keys , but how ?</p>
+<p>We should dive into the details of the keys generation process (the second step of the process above). When your device generate the encryption keys , it send it to the receiver using a secure algorithm .This algorithm is based on a mathematical function in such a way that even if there is a person sniffing your network , he can't figure out the keys .</p>
+<h2>How can we use it ?</h2>
+<p>There are more and more messaging apps that support the End To End encryption like Whatsapp , Telegram , Signal and recently Messenger .</p>
+<p>All of those apps offers an end to end encrypted chat but there are few difference between each of them . I'll classify them into two categories :</p>
+<ul>
+<li>Open source apps :
+<ul>
+<li>Telegram : a text only messaging app , 100M active users</li>
+<li>Signal : the Snowden-Approved app built by Open Whisper Systems</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Proprietary apps :
+<ul>
+<li>Whatsapp : Owned by Facebook with over 1 billion users</li>
+<li>Messenger : Owned by Facebook and recently it passed 1 billion users</li>
+<li>Google Allo : Owned by Google. It was announced in the Google IO 2016 event (not released to public yet)</li>
+</ul>
+</li>
+</ul>
+<p>All those proprietary apps use the same protocol as the Signal app. Open Whispers Systems helped these companies to integrate the open source encryption protocol into their apps.</p>
+<h2>You are secure , but ...</h2>
+<p>When using the open source apps you are almost 100% secure (theoretically) but when using the proprietary apps it's a little bit different since we can't check it ourselves.</p>
+<p>End To End encryption let the user send his messages securely and the content of the message can't be read only by the recipient . but there is the Metadata .....</p>
+<p>Metadata are the information used for delivering the message , like : the person who sent the message , the receiver , date and time of the message , duration of the call (if the app offers calling feature) . So , Whatsapp , Google and Facebook can know how much you communicate with your friends , when you communicate with them ... but without knowing the content of the messages which is important !</p>
+<p>They use the metadata for ads targeting , for example showing you the posts of the friend with whom you communicate the most at the first page because you'll probably pass more time on Facebook and therefore they will gain more money from showing you ads.</p>
+<p>Finally , I would like that more companies add the end to end encryption to their apps</p>
+
+            
+          </span>
+        </div>
+      
+        <div class="post py3">
+          <p class="post-meta">
+	    
+	      Aug 25, 2016
+	    
+	  </p>
+          <a href="/2016/08/25/mozilla-after-1-5-years-arabic-post/" class="post-link"><h3 class="h1 post-title">موزيلا ...</h3></a>
+          <span class="post-summary">
+            
+              <p><img class="wp-image-544 aligncenter" src="/assets/mozilla_wordmark.png" alt="Mozilla" width="326" height="132" /></p>
+<p id="magicdomid16" class="" style="text-align:right;"><span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">مرحبا بكم ، قبل البدء في الحديث عن موزيلا أود لو أنك تستعمل الآن متصفح فيرفكس لمشاهدة هذا الموقع ، أتمنى ذلك ;) ... في هذا المقال سأحاول الحديث عن تجربتي الخاصة التي عشتها مع مجتمع موزيلا تونس لمدة تزيد عن السنة و نصف و عن موزيلا بصفة عامة</span></p>
+<p class="" style="text-align:right;"><!--more--></p>
+<h2 style="text-align:right;">من هي موزيلا ؟</h2>
+<p id="magicdomid20" class="" style="text-align:right;"><span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">موزيلا هي مجموعة من الأشخاص ،من جميع الاختصاصات ، لهم نفس الهدف ألا وهو النهوض بالويب و حماية المعطيات الشخصية لمستخدمي الإنترنت</span></p>
+<p id="magicdomid21" class="" style="text-align:right;"><span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">على عكس ما يظنه البعض ، و كما سبق و ذكرت فإن موزيلا لا تضم مطوري التطبيقات فقط ، بل تضم جميع الاختصاصات كالسلامة المعلوماتية ، التسويق  ، التصميم ، إلخ</span></p>
+<p id="magicdomid22" class="" style="text-align:right;"><span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">أنا من الأشخاص الذين لا يودون العمل تحت ضغط الرؤساء في العمل و هذا ما وجدته في موزيلا تونس . في البداية ، و قبل الانضمام خفت أن أكون مجبراً على المساهمة في مشاريع موزيلا حتى و إن كنت لا أود ذلك ، لكن وجدت نفسي أعمل ، أقترح ، أنقد بكل حرية و هذا ما قاله لي أعضاء موزيلا</span></p>
+<blockquote>
+<h4 style="text-align:center;">" ليس لدينا رئيس ، نحن كلنا لنا نفس الدرجة "</h4>
+</blockquote>
+<p id="magicdomid25" class="" style="text-align:right;"><span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">في موزيلا  يمكنك القيام بالمساهمات التي تكون متاحة للعموم في ظرف وجيز ، على عكس بقية المجتمعات التي تخضع كل مساهمة أو تعديل فيها إلى الرقابة من قبل بعض الأشخاص .و على سبيل الذكر لا الحصر ، قمنا في موزيلا تونس بترجمة بعض مقالات المساعدة لمتصفح فيرفكس من اللغة الإنجليزية إلى العربية و قد تم قبول هذه التعديلات على الفور .إحساس الفخر جد رائع عندما تجد نفسك تساعد مستخدمي الإنترنت لتنصيب فيرفكس و لحماية معطياتهم الشخصية</span></p>
+<p id="magicdomid26" class="" style="text-align:right;"><span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">المجتمع في موزيلا لديه كلمة تؤخذ بعين الاعتبار في جميع قرارات موزيلا ، حيث يتم أخذ آراء عدة مساهمين قبل اتخاذ أي قرار يهم منتجات موزيلا</span></p>
+<p id="magicdomid27" class="" style="text-align:right;"><span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">بعد فترة من انضمامي في مجتمع موزيلا تونس ، تم إهدائي قميص موزيلا إضافة إلى اللصاقات التي توضع على الحاسوب</span></p>
+<p style="text-align:right;"><img class="wp-image-551 aligncenter" src="/assets/mozillatnswags.jpg?w=680" alt="Mozilla TN swags" width="440" height="330" /></p>
+<h2 style="text-align:right;">موزيلا و حماية المعطيات الشخصية</h2>
+<p style="text-align:right;">تعتبر موزيلا من المدافعين في الصف الأول على المعطيات الشخصية لمستخدميها و لذلك يعتبر متصفح فايرفوكس المتصفح الأكثر أمانا و حماية لمعطيات مستخدميه فهو المتصفح الوحيد ، إلى حد كتابة هذا المقال ، الذي يقدم خدمة <a href="https://blog.mozilla.org/tanvi/2016/06/16/contextual-identities-on-the-web/" target="_blank">الحاويات</a>.يتم الآن تجربة هذه الخدمة في النسخة التجريبية من <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">فيرفكس</span> لهذا السبب هي غير متوفرة لجميع مستخدمي <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">فيرفكس</span> ، سأحاول تبسيط الفكرة ، لا تقلق</p>
+<p style="text-align:right;">:D</p>
+<p style="text-align:right;"> خدمة الحاويات تمكنك من الإتصال بعدة حسابات لنفس الموقع بإستخدام متصفح <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">فيرفكس</span> فقط على سبيل المثال : يمكنك إستعمال <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">الجيميل</span> الخاص بالعمل و <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">الجيميل</span> الشخصي في نفس المتصفح و دون إستخدام النافذة الخاصة.و  بهذه الطريقة أيضا يمكنك منع المعلنين من تتبعكم على الأنترنيت</p>
+<p style="text-align:right;">إضافة إلى تطوير المتصفح الآمن ، <a href="https://wiki.mozilla.org/MOSS" target="_blank">موزيلا ترصد دوريا قيمة مالية هامة لمساعدة المشاريع المفتوحة المصدر</a> تقدر بحوالي ال3 ملايين دولار .تقدم هذه الهبات إلى مشاريع مثل مشروع "لاتس إنكريبت "، أو بالعربية : "<a href="https://letsencrypt.org/" target="_blank">هيا نشفر</a>" و هو عبارة على منصة توفر شهادات "س س ل " بالمجان. هذه الشهادات تمكن أصحاب المواقع من توفير نسخة مشفرة من مواقعهم</p>
+<h2 style="text-align:right;">كيف يمكنك المساهمة في موزيلا ؟</h2>
+<p style="text-align:right;">مهما كانك قدراتك و مهما كان مجال إختصاصك ، يمكنك بكل سهولة المساهمة في تطوير منتجات موزيلا. على سبيل المثال</p>
+<p style="text-align:right;">إذا كنت مطور يمكنك المساهمة في تطوير متصفح <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">فيرفكس</span></p>
+<p style="text-align:right;">(حاليا، في وقت كتابة هذا المقال ، يتم إستشارة مساهمي موزيلا حول <a href="https://blog.mozilla.org/opendesign/" target="_blank">إختيار شعار جديد لموزيلا</a>)  إذا كنت مصمم يمكنك المساهمة في تحسين تصميم موقع موزيلا أو متصفح <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">فيرفكس</span></p>
+<p style="text-align:right;padding-left:30px;">       إذا كانت لديك الخبرة في مجال السلامة المعلوماتية يمكنك إختبار مدى أمان متصفح <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">فيرفكس</span> و الإبلاغ عن أي ثغرة قد تجدها</p>
+<p style="text-align:right;">      إذا كنت تطقن أكثر من لغة يمكنك المساهمة في ترجمة منتجات موزيلا و موقع موزيلا إلى عدة لغات</p>
+<p style="text-align:right;">إن كنت لا تود المساهمة بأي من الطرق المذكورة أعلاه ، يمكنك بكل بساطة تنصيب <a href="https://nightly.mozilla.org/" target="_blank">النسخة التجريبة من فيرفكس</a> على حاسوبك أو على هاتفك الذكي .لاحقا في هذا المقال سأحاول الحديث أكثر عن هذه النسخة</p>
+<p style="text-align:right;">يمكنك زيارة <a href="https://www.mozilla.org/ar/contribute/" target="_blank">هذا الموقع</a> لمزيد من المعلومات</p>
+<h2 style="text-align:right;">النسخة التجريبية ل<span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">فيرفكس</span></h2>
+<p style="text-align:right;">إن كنت لا تريد الغوص في تفاصيل دورة حياة متصفح <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">فيرفكس</span> ، يمكنك قراءة الفقرة الثانية مباشرة</p>
+<p style="text-align:right;">تتكون دورة حياة متصفح <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">فيرفكس</span> من 4 نسخ ، كل منها تدوم 6 أسابيع. في يوم كتابة هذا المقال تحمل النسخة المستقرة من <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">فيرفكس</span> الرقم <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">48.0.1</span> في حين تحمل النسخة التجريبية الرقم 51 . في غضون 6 أسابيع ستحدث النسخة المستقرة و ستحمل الرقم 49 و بالنسبة للنسخة التجريبية فستحمل الرقم52</p>
+<p style="text-align:right;">لقد تحدث سابقا عن مجالات المساهمة في موزيلا و ذكرت إمكانية المساهمة عبر تنصيب النسخة التجريبية لمتصفح <span class="author-a-mtr5z79zz68zz65zz71zdz90zyz81zz76z1l2">فيرفكس</span>. نعم الأمر بسيط لهذه الدرجة</p>
+<p style="text-align:right;">عبر تنصيبك للنسخة التجريبية فإنك ستلعب دورا هاما في تجربة الميزات الجديدة للمتصفح و إختبارها. مثلا : أنا الآن أستعمل النسخة التجريبية و أختبر خاصية الحاويات( التي تحدت عنها أعلاه)</p>
+<p style="text-align:right;">ترسل النسخة التجريبية بشكل دوري معلومات هامة عن صحة المتصفح ، مدى تجاوبه ، الوقت الذي إستغرقه للبدء ، إلخ. هذه المعلومات ترسل دون الكشف عن هوية المستخدم حماية لمعطياته الشخصية (بما أن موزيلا دوعا تسعى لحماية معطياتك الشخصية كما ذكرنا سابقا) .هذه المعلومات جد هامة و تستخدم من قبل المطورين لتحسين المتصفح و الزيادة في سرعته</p>
+<p style="text-align:right;">هنالك القليل من المشاكل التي قد تعرضك عند إستخدام النسخة التجريبية ، بما أنها نسخة تجريبية فهذا يعني أنها قد تكون غير مستفرة و قد تحمل القليل من الميزات التي لا تعمل كما ينبغي .لا تقلق فسيتم إصلاحها في ظرف وجيز بما ان النسخة التجريبية تتلقى التحديث يوميا</p>
+<h2 style="text-align:right;">ماذا أضافت لي موزيلا ؟</h2>
+<p style="text-align:right;">سأكتفي بالقول : عند ال<span class="author-a-az69z6z83znoz73zaz65zz81zz77zpmz90ziz75z">إحتكاك</span> بأشخاص ذو معرف و ذو خبرة أكثر مني بكثير هذا في حد ذاته أهم إضافة بالنسبة لي ﻷنني تعلمت الكثير منهم و كانو مصدر إلهام لي</p>
+<p style="text-align:right;">و في الأخير أود دعوتكم للإنضمام إلى مجتمع موزيلا لأن ذلك سيعود عليكم بالفائدة و هذا مؤكد</p>
+<p style="text-align:right;">و أود ايضا شكر الصديقين <a href="https://www.facebook.com/manna3" target="_blank">عبد الرحمان مناع</a> و <a href="https://iwalid.blogspot.com" target="_blank">وليد عمريو</a> على مراجعة هذا المقال</p>
+
+            
+          </span>
+        </div>
+      
+        <div class="post py3">
+          <p class="post-meta">
+	    
+	      Jul 18, 2016
+	    
+	  </p>
+          <a href="/2016/07/18/thoughts-after-3-years-of-using-linux/" class="post-link"><h3 class="h1 post-title">Thoughts after 3 years of using Linux</h3></a>
+          <span class="post-summary">
+            
+              <p><img class="  wp-image-213 aligncenter" src="/assets/linux-wallpaper-2.jpg" alt="Linux" width="353" height="199" /></p>
+<p>&nbsp;</p>
+<p>In this post I'll try to share my thoughts about the Linux OS after using it for more than 3 years (since 2013). This remain my personal opinion and according to my own experience .</p>
+<p><!--more--></p>
+<p>Before starting , I would like to clarify the Gnu/Linux naming controversy.Many members of the free and open source software community use the word "Linux" instead of "Gnu/Linux" to refer to the operating system that use the Gnu software on top of the Linux kernel. Personally , I use "Linux" as a shortcut , every second counts nowadays , you get the point.<b> </b></p>
+<p>Let's start with a quick definition of "Linux". Enjoy !</p>
+<h3>What is Linux ?</h3>
+<p>Linux is an open source operating system with a market share around 2% in the personal computers market, and above 90% in servers market.</p>
+<p>Since Linux is an open source OS , every one could change its source code to suit his needs and thus many companies and developers published their own version. At this moment, there are plenty of distributions available to download for FREE .</p>
+<h3>Why Linux ?</h3>
+<p>The first time I chose to use Linux as my main operating system , was simply because <span id="result_box" class="short_text" lang="en"><span class="">I got bored</span></span> <span id="result_box" class="short_text" lang="en"><span class="">from </span></span>the Windows OS and the main reasons are :</p>
+<ul>
+<li>Windows isn't <span id="result_box" class="short_text" lang="en"><span class="">customizable , it doesn't work the way I wanted.</span></span></li>
+<li>There is no frequent updates</li>
+<li>Closed source software</li>
+</ul>
+<p>When I was using the Microsoft's operating system , I felt like I'm a "Microsoft <span id="result_box" class="short_text" lang="en"><span class="">Slave" : Your suggestions AREN'T taken into consideration , You CAN'T customize your own PC , You CAN'T feel the freedom !</span></span></p>
+<h3>After making the switch ...</h3>
+<p>" The best ever ! " , this was the first word I said after installing and testing Ubuntu for a few hours .</p>
+<p><span id="result_box" class="short_text" lang="en">Thenceforth , I <span class="">gradually</span></span> became an open source enthusiast and I started encouraging my friends to make the switch.</p>
+<p>A few moths later , I joined the <span style="color:#ff6600;"><a style="color:#ff6600;" href="https://wiki.ubuntu.com/TunisianTeam" target="_blank">Ubuntu-TN</a></span> community . I met a lot of amazing people that would help anyone with their knowledge . I remember well when I posted an issue to the <span style="color:#ff6600;"><a style="color:#ff6600;" href="https://community.ubuntu.com/contribute/support/irc/" target="_blank">IRC</a></span> channel , I got a quick response and a personal support from a well experienced System Admin , if you know what I mean.</p>
+<p>As any Linux user , I tested many distros to choose the best one that meets my needs.Here is a list of some distros I gave a try :</p>
+<ul>
+<li>Ubuntu</li>
+<li>Ubuntu Gnome</li>
+<li>Fedora</li>
+<li>Kali linux</li>
+<li>Debian</li>
+<li>Elementary OS</li>
+<li>Deepin</li>
+<li>Kubuntu</li>
+</ul>
+<p>Briefly :</p>
+<p>When using Linux , <span id="result_box" class="short_text" lang="en"><span class="">you'll have much</span> <span class="">luck finding the distribution that meets your needs unlike Windows where you don't have a choice. </span></span></p>
+<p><span id="result_box" class="short_text" lang="en"><span class="">Furthermore</span></span> , when you use Linux your PC will be kept up-to-date because a new version will be available every 6 months (see <span style="color:#ff6600;"><a style="color:#ff6600;" href="https://wiki.ubuntu.com/Releases" target="_blank">Ubuntu releases schedule</a></span>).</p>
+<p>Another good <span id="result_box" class="short_text" lang="en">reason to use Linux is that it's built by a huge community of developers committed to make this operating system better and each one of them believe in the transparency and the "open source manifesto" .They make the source code available online so everyone could check if there is malicious software or backdoor.  </span></p>
+<p>The greatest thing is that you feel that you belong to the largest community, this means that there is millions of people that have the same values and interests as you ,and if you ever have any issue just post it to a forum and you'll get a response in just few minutes.</p>
+<h3>Which is the best distro ?</h3>
+<p>Actually , there is no right answer to this question because everyone have his choices and his point of view . I'll try to give you my recommendations though.</p>
+<ul>
+<li><span id="result_box" class="short_text" lang="en"><span class="">If you're seeking for a best looking <span id="result_box" class="short_text" lang="en"><span class="">distribution</span></span> I suggest you to try <span style="color:#ff6600;"><a style="color:#ff6600;" href="https://elementary.io/" target="_blank">Elementary OS</a></span></span></span><span id="result_box" class="short_text" lang="en"></span></li>
+<li><span id="result_box" class="short_text" lang="en"><span class="">If you're a hacker, choose <span style="color:#ff6600;"><a style="color:#ff6600;" href="https://www.kali.org/" target="_blank">Kali Linux</a></span>,obviously. It have all the hacking tools installed by default.</span></span></li>
+<li>And the recommended distro for the every day use is <span style="color:#ff6600;"><a style="color:#ff6600;" href="http://www.ubuntu.com/" target="_blank">Ubuntu</a></span> .it's the most popular Linux distribution at this time .</li>
+</ul>
+<p>&nbsp;</p>
+
+            
+          </span>
+        </div>
+      
+    </div>
+
+    
+<div class="pagination clearfix mb1 mt4">
+  <div class="left">
+    
+      
+        <a class="pagination-item" href="/page8">&laquo; Newer</a>
+      
+    
+  </div>
+  <div class="right">
+    
+      <span class="pagination-item disabled">Older &raquo;</span>
+    
+  </div>
+  <div class="pagination-meta">Page 9 of 9</div>
+</div>
+
+
+  
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <div class="left">
+      <small>
+        &copy; 2020 Marwen Doukh
+      </small>
+    </div>
+    
+  </div>
+</footer>
+<script type="text/javascript">
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js")
+    }
+</script>
+
+</body>
+</html>

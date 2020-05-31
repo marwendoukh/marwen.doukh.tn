@@ -1,0 +1,78 @@
+---
+layout: post
+title: Face detection with OpenCV
+date: 2017-04-04 17:57:49.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Tutorial
+tags:
+- CheerTrip
+- English
+- openCV
+meta:
+  switch_like_status: '1'
+  sharing_disabled: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  _publicize_job_id: '3629704342'
+author:
+  login: marwendoukh
+  email: marwen.doukh@gmail.com
+  display_name: Marwen Doukh
+  first_name: Marwen
+  last_name: Doukh
+permalink: "/2017/04/04/face-detection-with-opencv/"
+---
+<p><img class="  wp-image-3192 aligncenter" src="{{ site.baseurl }}/assets/opencv-logo.png" alt="openCV logo" width="182" height="224" /></p>
+<p>&nbsp;</p>
+<p>OpenCV is an open source library for image processing and object detection. In this tutorial we'll create a Python program that detect and draw a rectangle around the detected face.</p>
+<p><!--more--></p>
+<p>To detect objects , openCV analyze the image and extract its characteristics and compare them to a classifier which is a file that describes the faces characteristics.</p>
+<h2>What is a classifier ?</h2>
+<p>A classifier (a file) is the result of analyzing each pixel of an image and extracting its characteristics. This file will be used to detect objects or persons in an image by comparing its characteristics with the classifier.</p>
+<p>The more you train the classifier , the more accurate results will be .Classifier training is based on a dataset (images containing the object that you want to detect).</p>
+<p>To illustrate :</p>
+<p>If you want to create a classifier that detect cars in an image , you have to prepare a dataset of car images of all categories , colors , manufacturers ... try to prepare as much pictures as you can  : images of Volkswagen cars , BMW cars , black cars , white cars , 4*4 cars , sport cars and so on ...</p>
+<p>The classifier needs this images (positive images) to understand how cars look like , but it needs also a dataset that contains negatives images , images that contains anything except cars : pictures of trucks , boats , airplanes ... You get the point.</p>
+<p>In our case , detecting faces , openCV offers a trained classifier that was trained using hundreds of images and since its under a free to redistribute license , we'll use it in our project.</p>
+<h2>Start developing</h2>
+<p>First , we need to import openCV library for python :</p>
+<pre>import cv2</pre>
+<p>Since we'll give the file name in the program parameters , we need to import "sys"</p>
+<pre>import sys</pre>
+<p>Then import the openCV face detection classifier</p>
+<pre>faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')</pre>
+<p>Import the image that its file name is given in parameters , it should be in the same directory as the python program.</p>
+<pre>image = cv2.imread(sys.argv[1])</pre>
+<p>Now, we'll do the most important part , detecting the face using the classifier.</p>
+<pre>faces = faceCascade.detectMultiScale(
+        #the image to use
+        image,
+        scaleFactor=1.1,
+        minNeighbors=5,
+        #specify the minimal object size , if it is smaller than 20*20 it will not be retained
+        minSize=(20, 20)
+    )</pre>
+<p>Once the face is detected , let's draw a red rectangle around it</p>
+<pre>for (x, y, w, h) in faces:
+   cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 0), 2)</pre>
+<p>Finally , show the final image and do not close it until the user press a button</p>
+<pre>cv2.imshow("face", image)
+cv2.waitKey(0)</pre>
+<p>&nbsp;</p>
+<h2>Testing</h2>
+<p>Choose one of your face images , put it in the same directory as the python program and run:</p>
+<pre>python face-detection.py yourface.jpg</pre>
+<p>&nbsp;</p>
+<p>The result will be like this</p>
+<p>&nbsp;</p>
+<p>[caption id="attachment_3197" align="aligncenter" width="393"]<img class=" size-full wp-image-3197 aligncenter" src="{{ site.baseurl }}/assets/mr-bean-face-detection.png" alt="Mr bean face detection" width="393" height="218" /> Mr bean face detected[/caption]</p>
+<p>&nbsp;</p>
+<h3>You can get the full source code from <a href="https://github.com/marwendoukh/face-detection-with-opencv" target="_blank">here</a></h3>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

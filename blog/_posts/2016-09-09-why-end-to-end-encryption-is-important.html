@@ -1,0 +1,76 @@
+---
+layout: post
+title: Why End-To-End encryption is important ?
+date: 2016-09-09 23:23:00.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Privacy
+tags:
+- End to End Encryption
+- English
+meta:
+  switch_like_status: '1'
+  sharing_disabled: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  _publicize_job_id: '26665896344'
+author:
+  login: marwendoukh
+  email: marwen.doukh@gmail.com
+  display_name: Marwen Doukh
+  first_name: Marwen
+  last_name: Doukh
+permalink: "/2016/09/09/why-end-to-end-encryption-is-important/"
+---
+<p><img class=" size-full wp-image-793 aligncenter" src="{{ site.baseurl }}/assets/end-to-end-encryption.png" alt="end-to-end-encryption" width="980" height="550" /></p>
+<p>Hi everyone !</p>
+<p>In this post , I will talk about the importance of the End-To-End encryption nowadays.</p>
+<p>So , what is it exactly ?  how can we use it ?  And why it's important ?</p>
+<h2></h2>
+<p><!--more--></p>
+<h2>Why it's important  ?</h2>
+<p>Nowadays , we use the internet for many purposes : at work , for personal conversations , for  business calls , and so on ...</p>
+<p>Day after day , we discuss more and more online instead of real life , we discuss about private things , we discuss about our future , about the things that matters to us ... thus we generate a tremendous amount of Gigabits (a unit to measure data size) that we don't want that big companies gain access to it , like : Google , Microsoft , Facebook ...</p>
+<p>It's true that encryption used by messaging apps,which is encrypting data only in transit , could protect our privacy , but it's not enough since the messaging app owner could read the data easily. Don't worry I'll explain more .</p>
+<p>For example : if you are using Hangouts (a messaging App developed by Google) and you send a message to your lovely friend , when you hit the "send" button , your message will be encrypted .After that , your message (encrypted) travels over the internet  from router A to router B then to router C ... In this phase , your message couldn't be read by hackers or the internet service provider ... Then , your message come safely to the Hangouts server which will save it and then route it to your friend's device. After receiving the message , your friend's device will decrypt it and show it to your friend . This is what happens without diving into the details.</p>
+<p>To put it simply , all your messages are saved in Google's servers and it can be accessed at any time.</p>
+<p>What's the solution then ?</p>
+<p>Use the End-To-End encrypted messaging apps , because the keys (of the encryption) are generated locally by your device and your message is encrypted using these keys . Therefore,  no one can decrypt your data since you are the only persons who own the decryption keys (you and the receiver).</p>
+<h2>End-To-End encryption ?</h2>
+<p>The End-To-End encryption (or end to end encryption) is a way of encrypting data so that only the sender and the receiver could read the content of this data. NO ONE ELSE could access the content even your ISP (Internet Service Provider) , a hacker trying to intercept the data ...</p>
+<p>This is what happens :</p>
+<p>you write a message -&gt; your device will generate the encryption keys  -&gt; your message will be encrypted -&gt; the messaging server receive your message -&gt; the server deliver the message to your friend -&gt; your friend's device decrypt the message -&gt; your friend is able now to read it.</p>
+<p>But ... Are you wondering how your friend's device is able to decrypt the message "without having the keys " !!!</p>
+<p>Of course he does have the keys , but how ?</p>
+<p>We should dive into the details of the keys generation process (the second step of the process above). When your device generate the encryption keys , it send it to the receiver using a secure algorithm .This algorithm is based on a mathematical function in such a way that even if there is a person sniffing your network , he can't figure out the keys .</p>
+<h2>How can we use it ?</h2>
+<p>There are more and more messaging apps that support the End To End encryption like Whatsapp , Telegram , Signal and recently Messenger .</p>
+<p>All of those apps offers an end to end encrypted chat but there are few difference between each of them . I'll classify them into two categories :</p>
+<ul>
+<li>Open source apps :
+<ul>
+<li>Telegram : a text only messaging app , 100M active users</li>
+<li>Signal : the Snowden-Approved app built by Open Whisper Systems</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Proprietary apps :
+<ul>
+<li>Whatsapp : Owned by Facebook with over 1 billion users</li>
+<li>Messenger : Owned by Facebook and recently it passed 1 billion users</li>
+<li>Google Allo : Owned by Google. It was announced in the Google IO 2016 event (not released to public yet)</li>
+</ul>
+</li>
+</ul>
+<p>All those proprietary apps use the same protocol as the Signal app. Open Whispers Systems helped these companies to integrate the open source encryption protocol into their apps.</p>
+<h2>You are secure , but ...</h2>
+<p>When using the open source apps you are almost 100% secure (theoretically) but when using the proprietary apps it's a little bit different since we can't check it ourselves.</p>
+<p>End To End encryption let the user send his messages securely and the content of the message can't be read only by the recipient . but there is the Metadata .....</p>
+<p>Metadata are the information used for delivering the message , like : the person who sent the message , the receiver , date and time of the message , duration of the call (if the app offers calling feature) . So , Whatsapp , Google and Facebook can know how much you communicate with your friends , when you communicate with them ... but without knowing the content of the messages which is important !</p>
+<p>They use the metadata for ads targeting , for example showing you the posts of the friend with whom you communicate the most at the first page because you'll probably pass more time on Facebook and therefore they will gain more money from showing you ads.</p>
+<p>Finally , I would like that more companies add the end to end encryption to their apps</p>

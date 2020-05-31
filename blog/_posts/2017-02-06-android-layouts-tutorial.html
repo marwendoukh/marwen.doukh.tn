@@ -1,0 +1,325 @@
+---
+layout: post
+title: Android Layouts tutorial
+date: 2017-02-06 00:29:24.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Tutorial
+tags:
+- Android
+- CheerTrip
+- English
+- mobile
+meta:
+  switch_like_status: '1'
+  sharing_disabled: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  _publicize_job_id: '1539041076'
+author:
+  login: marwendoukh
+  email: marwen.doukh@gmail.com
+  display_name: Marwen Doukh
+  first_name: Marwen
+  last_name: Doukh
+permalink: "/2017/02/06/android-layouts-tutorial/"
+---
+<p><img class="  wp-image-3056 aligncenter" src="{{ site.baseurl }}/assets/marwen-doukh-layout.png" alt="Marwen Doukh - layout" width="235" height="392" /></p>
+<p>After posting the <a href="https://marwendoukh.wordpress.com/2017/02/01/consuming-rest-web-service-from-android/" target="_blank">weather app tutorial </a>, many friends asked me to do a tutorial about how to organize Android Views (TextView , ImageView ...) inside a UI. So in this tutorial, we'll find out how to make better UI.</p>
+<p><!--more--></p>
+<p><img class=" size-full wp-image-3059 aligncenter" src="{{ site.baseurl }}/assets/android_wallpaper.png" alt="Android wallpaper" width="480" height="300" /></p>
+<p>Android UI is designed using XML files , thus, it's based on tags. It's recommended that you be familiar with XML.</p>
+<h2>LinearLayout VS RelativeLayout</h2>
+<p>Both LinearLayout and RelativeLayout , are containers that holds other Views like TextView , ImageView , Button ...<br />
+The difference between them , is how they organize the items that it contains.</p>
+<h2>LinearLayout</h2>
+<p>A LinearLayout organize Views either vertically or horizontally .<br />
+A LinearLayout with vertical orientation , put Views one below the other</p>
+<pre>&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    &gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 1"
+        /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 2"
+        /&gt;
+
+&lt;/LinearLayout&gt;</pre>
+<p>The result would be</p>
+<p>[caption id="attachment_2851" align="aligncenter" width="176"]<img class="alignnone  wp-image-2851" src="{{ site.baseurl }}/assets/linearlayout-with-vertical-orientation.png?w=680" alt="LinearLayout with vertical orientation" width="176" height="293" /> LinearLayout with vertical orientation[/caption]</p>
+<p>A LinearLayout with horizontal orientation put Views one next to the other</p>
+<pre>&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    &gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 1"
+        /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 2"
+        /&gt;
+
+&lt;/LinearLayout&gt;</pre>
+<p>The result would be</p>
+<p>[caption id="attachment_2857" align="aligncenter" width="176"]<img class="alignnone  wp-image-2857" src="{{ site.baseurl }}/assets/linearlayout-with-horizontal-orientation.png?w=680" alt="LinearLayout with horizontal orientation" width="176" height="293" /> LinearLayout with horizontal orientation[/caption]</p>
+<h2>RelativeLayout</h2>
+<p>A RelativeLayout organize Views the one relative to the other. It's hard to organize Views using a RelativeLayout .</p>
+<pre>&lt;RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    &gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 1"
+        /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 2"
+        /&gt;
+
+&lt;/RelativeLayout&gt;</pre>
+<p>The result would be</p>
+<p>[caption id="attachment_2863" align="aligncenter" width="176"]<img class="alignnone  wp-image-2863" src="{{ site.baseurl }}/assets/relativelayout.png?w=680" alt="RelativeLayout" width="176" height="294" /> RelativeLayout[/caption]</p>
+<p>The first Button is hidden behind the second one. You see the difference between Relative and Linear . That being said , RelativeLayout is required if you want to put a View behind an other . One of the most popular use cases of RelativeLayout is putting an ImageView with a ProgressBar.</p>
+<pre>&lt;RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    &gt;
+
+    &lt;ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        /&gt;
+
+    &lt;ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        /&gt;
+
+&lt;/RelativeLayout&gt;</pre>
+<p>The result would be</p>
+<p>[caption id="attachment_2869" align="aligncenter" width="176"]<img class="alignnone  wp-image-2869" src="{{ site.baseurl }}/assets/relativelayout-contains-progressbar-and-imageview.png?w=680" alt="RelativeLayout contains ProgressBar and ImageView" width="176" height="293" /> RelativeLayout contains ProgressBar and ImageView[/caption]</p>
+<p>So , in your JAVA code , you'll hide the ImageView and show the ProgressBar while loading the image . Once the image loaded , you hide the ProgressBar and show the ImageView.</p>
+<h2>ScrollView</h2>
+<p>If you have a long list of Views and the screen can't display them all , put them in a LinearLayout and make the ScrollView as a parent . Let's see an example</p>
+<pre>&lt;ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    &gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 1"
+        /&gt;
+    &lt;ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 2"
+        /&gt;
+
+&lt;/LinearLayout&gt;
+&lt;/ScrollView&gt;</pre>
+<p>If you have more content to add , and the screen is too small to display it all , you'll have a scroll bar and you can see all the UI by scrolling up and down.</p>
+<h2>match_parent VS wrap_content</h2>
+<p>Every graphical item should have 2 attributes :</p>
+<ul>
+<ul>
+<ul>
+<li>android:layout_width</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>android:layout_height</li>
+</ul>
+</ul>
+</ul>
+<p>&nbsp;</p>
+<p>match_parent means that the View will have whole size as its parent container. wrap_content means that the View will take that size it needs. Let's see what happens when we set the layout width of a TextView as wrap_content (I changed the text color and text background to better understand the difference)</p>
+<pre>&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    &gt;
+
+   &lt;TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="short text"
+       android:textColor="#FFFFFF"
+       android:background="#000000"
+       /&gt;
+
+&lt;/LinearLayout&gt;</pre>
+<p>The result would be</p>
+<p>[caption id="attachment_2903" align="aligncenter" width="176"]<img class="alignnone  wp-image-2903" src="{{ site.baseurl }}/assets/textview-wrap_content-width.png?w=680" alt="TextView : wrap_content width" width="176" height="293" /> TextView : wrap_content width[/caption]</p>
+<p>If we write a longer text , the result would be</p>
+<p>[caption id="attachment_2908" align="aligncenter" width="176"]<img class="alignnone  wp-image-2908" src="{{ site.baseurl }}/assets/textview-wrap_content-width-longer-text.png?w=680" alt="TextView : wrap_content width (longer text)" width="176" height="294" /> TextView : wrap_content width (longer text)[/caption]</p>
+<p>If we change the width to match_parent , it will take all the screen width since its parent container width is set to match_parent also.</p>
+<pre>&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    &gt;
+
+   &lt;TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="some text here"
+       android:textColor="#FFFFFF"
+       android:background="#000000"
+       /&gt;
+
+&lt;/LinearLayout&gt;</pre>
+<p>The result is</p>
+<p>[caption id="attachment_2914" align="aligncenter" width="176"]<img class="alignnone  wp-image-2914" src="{{ site.baseurl }}/assets/textview-width-set-to-match_parent.png?w=680" alt="TextView width set to match_parent" width="176" height="294" /> TextView width set to match_parent[/caption]</p>
+<p>&nbsp;</p>
+<h2>layout_weight and weightSum</h2>
+<p>If you want to customize the parent container space distribution between the Views, you have to use layout_weight and weightSum. In the parent container , weightSum means that the space will be divided to "n" units. And in View tag , the layout_weight attribute means how much it'll occupy from the "n" units (of its parent container) For example , if you have 2 Buttons and you want to distribute the space equally , set layout_weight (for both of them) to 1 and weightSum (of the parent container) to 2 . Make sure to set the layout_width to "0dp"</p>
+<pre>&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    &gt;
+
+  &lt;Button
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Button 1"
+      /&gt;
+    &lt;Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Button 2"
+        /&gt;
+    
+&lt;/LinearLayout&gt;</pre>
+<p>The result would be</p>
+<p>[caption id="attachment_2940" align="aligncenter" width="176"]<img class="alignnone  wp-image-2940" src="{{ site.baseurl }}/assets/2-buttons-distributed-equally.png?w=680" alt="2 Buttons distributed equally" width="176" height="293" /> 2 Buttons distributed equally[/caption]</p>
+<p>In case you want to give the first Button 3/4 of the screen width , set the weightSum to 4 , the Button 1 layout_weight to 3 and the Button 2 layout_weight to 1.</p>
+<pre>&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="4"
+    &gt;
+
+  &lt;Button
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="3"
+      android:text="Button 1"
+      /&gt;
+    &lt;Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Button 2"
+        /&gt;
+
+&lt;/LinearLayout&gt;</pre>
+<p>The result would be</p>
+<p>[caption id="attachment_2955" align="aligncenter" width="176"]<img class="alignnone  wp-image-2955" src="{{ site.baseurl }}/assets/customize-space-distribution1.png" alt="customize space distribution" width="176" height="293" /> customize space distribution[/caption]</p>
+<p>&nbsp;</p>
+<h2></h2>
+<p>&nbsp;</p>
+<h2>gravity VS layout_gravity</h2>
+<p>Both of those properties are used to position the Views properly.</p>
+<ul>
+<li>layout_gravity is used to position the View inside its parent container</li>
+</ul>
+<ul>
+<li>gravity is used to position the content of the View itself</li>
+</ul>
+<p>&nbsp;</p>
+<p>This code will position the first Button in the center of the screen</p>
+<pre>&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    &gt;
+
+  &lt;Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Button 1"
+      android:layout_gravity="center"
+
+      /&gt;
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 2"
+        /&gt;
+
+&lt;/LinearLayout&gt;</pre>
+<p>The result would be</p>
+<p>[caption id="attachment_3026" align="aligncenter" width="176"]<img class="alignnone  wp-image-3026" src="{{ site.baseurl }}/assets/center-a-button.png" alt="center a Button" width="176" height="293" /> center a Button[/caption]</p>
+<p>If you want to center both of them , set the gravity to center in the parent container (since gravity is used to position all the content inside a View)</p>
+<pre>&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    &gt;
+
+  &lt;Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Button 1"
+
+      /&gt;
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button 2"
+        /&gt;
+
+&lt;/LinearLayout&gt;</pre>
+<p>The result would be</p>
+<p>[caption id="attachment_3036" align="aligncenter" width="176"]<img class="alignnone  wp-image-3036" src="{{ site.baseurl }}/assets/center-all-the-content.png" alt="center all the content" width="176" height="293" /> center all the content[/caption]</p>
+<h2>Test your skills</h2>
+<p>If you want to test your skills , try to develop this user interface. The solution is at the end of this tutorial. Launch Android Studio and consider it as an exam.</p>
+<p>[caption id="attachment_3044" align="aligncenter" width="300"]<img class="  wp-image-3044 aligncenter" src="{{ site.baseurl }}/assets/test-your-skills.png" alt="Test your skills" width="300" height="500" /> Android layouts exam[/caption]</p>
+<p>The solution is <a href="https://github.com/marwendoukh/android-layouts-exam-solution" target="_blank">here</a>.</p>
