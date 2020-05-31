@@ -3,8 +3,8 @@ title:       Marwen Doukh
 email:       marwen@doukh.tn
 author:      Marwen Doukh
 description: "This is my personal blog. Marwen Doukh"
-baseurl: "/blog"
-url:         "marwen.doukh.tn"
+baseurl: ""
+url:         "/blog"
 date_format: "%b %-d, %Y"
 header_pages:
  - about.md
