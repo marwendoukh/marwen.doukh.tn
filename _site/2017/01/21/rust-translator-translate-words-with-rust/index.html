@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>"Rust Translator" : translate words with Rust ... &#8211; Marwen Doukh</title>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="This is my personal blog. Marwen Doukh">
+    <meta name="robots" content="all">
+    <meta name="author" content="Marwen Doukh">
+    <meta name="keywords" content="Mozilla, Tutorial">
+    <link rel="canonical" href="http://localhost:4000/2017/01/21/rust-translator-translate-words-with-rust/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Marwen Doukh" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css?202005311507" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="&quot;Rust Translator&quot; : translate words with Rust ...">
+    <meta property="og:description" content="This is my personal blog. Marwen Doukh">
+    <meta property="og:url" content="http://localhost:4000/2017/01/21/rust-translator-translate-words-with-rust/">
+    <meta property="og:site_name" content="Marwen Doukh">
+    
+    <meta property="og:image" content="http://localhost:4000/images/me.jpeg">
+    
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+    <meta name="twitter:title" content=""Rust Translator" : translate words with Rust ..." />
+    <meta name="twitter:description" content="This is my personal blog. Marwen Doukh" />
+    <meta name="twitter:url" content="http://localhost:4000/2017/01/21/rust-translator-translate-words-with-rust/" />
+    
+    <meta name="twitter:image" content="http://localhost:4000/images/me.jpeg" />
+    
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+</head>
+
+<body class="site animated fade-in-down">
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Marwen Doukh</a>
+      <nav class="site-nav">
+        
+
+
+
+    
+    
+    
+    
+        <a class="nav-link" href="/about">Home</a>
+    
+
+    
+
+    
+    
+    
+    
+
+    
+
+
+      </nav>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>"Rust Translator" : translate words with Rust ...</h1>
+  <span class="post-meta">Jan 21, 2017 |</span>
+  
+  <span class="post-meta small">
+  
+    4 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <p><img class="alignnone size-full wp-image-2452" src="/assets/2016-07-12-image-10.png" alt="2016-07-12-image-10" width="1100" height="618" /></p>
+<p><a href="https://www.rust-lang.org" target="_blank">Rust</a> is a new systems programming language made by Mozilla , it's extremely fast !</p>
+<p>In this tutorial we'll develop a program in Rust that translate words using the Yandex Translator API.</p>
+<p><!--more--></p>
+<h2>Installing Rust</h2>
+<p>Rust is always changing , this tutorial is made with version 1.14.0 (released in December 22, 2016).</p>
+<p>To install the latest Rust version , run this command in your Terminal</p>
+<pre>curl https://sh.rustup.rs -sSf | sh</pre>
+<h2></h2>
+<h2>Create a new project</h2>
+<p>Cargo is a package manager for Rust , it also create projects , build , and run it .</p>
+<p>To create a new Rust project , run</p>
+<pre><code class="language-shell">cargo new RustTranslator --bin</code></pre>
+<p><span style="color:#993366;"> - -bin</span> indicates that we are creating a binary program and not a library.</p>
+<p>Once you created the project , two files will be created</p>
+<ul>
+<li>Cargo.toml : contains the project dependencies and information (developer,version ...)</li>
+<li>main.rs : contains our source code</li>
+</ul>
+<p>Go to src , with</p>
+<pre>cd src</pre>
+<p>to run the program , run</p>
+<pre>cargo run</pre>
+<p>This will prompt a simple hello world</p>
+<pre>Hello, world!</pre>
+<h2>Import dependencies</h2>
+<p>Open Cargo.toml and add</p>
+<pre>[dependencies]
+hyper = "0.10.0"
+rustc-serialize = "0.3"
+hyper-native-tls = "0.2"</pre>
+<p>Our project needs those libraries :</p>
+<ul>
+<li>Hyper : will help us make HTTP requests to get the word's translation from Yandex API</li>
+<li>rustc-serialize : will help us parse the HTTP result</li>
+<li>hyper-native-tls : Since Yandex Translator API is available in HTTPS , we need this library to make HTTP request to encrypted web services</li>
+</ul>
+<p>To import it to the project , run</p>
+<pre>cargo update</pre>
+<p>Just wait , this depends on your Internet speed.</p>
+<h2>Coding ...</h2>
+<p>We just finished importing the libraries we need , now we have to tell Rust that we will use it in our program . To do so , open  main.rs and add :</p>
+<pre>extern crate hyper;
+extern crate rustc_serialize;
+extern crate hyper_native_tls;
+
+use hyper::client::Client;
+use std::io::Read;
+use hyper::net::HttpsConnector;
+use hyper_native_tls::NativeTlsClient;
+use std::io;</pre>
+<p>this will compile and link the libraries to our project.</p>
+<p>To get the word that the user want to translate , we need to read user input from the keyboard , so add this to our "main" function</p>
+<pre> let mut word = String::new();
+
+ io::stdin().read_line(&amp;mut word)
+            .expect("failed to read the word");</pre>
+<p>The next step is to get the language that the user want to translate the word to. We will do the same thing :</p>
+<pre> let mut language = String::new();
+
+io::stdin().read_line(&amp;mut language)
+            .expect("failed to read the language");</pre>
+<p>Every request to Yandex Translator API , is made to a link as below</p>
+<pre>https://translate.yandex.net/api/v1.5/tr.json/translate?key=YOUR-KEY&amp;text=THE-WORD&amp;lang=THE-LANGUAGE&amp;format=json</pre>
+<p>So , you have to put your own key ,you can get a new one from <a href="https://tech.yandex.com/keys/get/?service=trnsl" target="_blank">here</a> (If you just want to test the program , you can use mine , I'll put it below . Please don't make too much requests !). In every request we make , we have to change the word we want to translate and the language that the user chose . To do so , we'll create a new variable called "link" and concatenate "language" and "word" to it .</p>
+<pre>let mut link = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170114T114459Z.7de5877240d656e7.e5bdc730b5945491203a9b7a0ee0cfd7af579369&amp;text=".to_string();
+    link = link +  &amp;word;
+    link.push_str("&amp;lang=");
+    link= link+&amp;language;
+    link.push_str("&amp;format=json");</pre>
+<p>Once we have the word , the language and the link , We are ready to make the HTTP request to get the result from Yandex Translator</p>
+<pre>let ssl = NativeTlsClient::new().unwrap();
+let connector = HttpsConnector::new(ssl);
+let client = Client::with_connector(connector);
+    // the string that will contain the request result
+let mut translationResult = String::new();
+    // send the request   
+client.get(&amp;link)
+          .send()
+          .unwrap()
+            // put the result to the string declared above
+          .read_to_string(&amp;mut translationResult)
+          .unwrap();</pre>
+<p>To be able to extract the translated word , we'll format the HTTP result to JSON</p>
+<pre>let data = rustc_serialize::json::Json::from_str(&amp;translationResult).unwrap();</pre>
+<p>Then , get the JSON object.</p>
+<pre>let obj = data.as_object().unwrap();</pre>
+<p>This JSON object contains the translated word and the source-destination language. To extract this information from the JSON object , add :</p>
+<pre>let translatedWord = obj.get("text").unwrap();
+let translatedFromTo = obj.get("lang").unwrap();</pre>
+<p>Finally , print the result</p>
+<pre>println!("translation is : {} ",translatedWord[0]);
+println!("translated from-to  : {} ",translatedFromTo);</pre>
+<h2>"Rust Translator" is ready to test</h2>
+<p>To test our project , run</p>
+<pre>cargo run</pre>
+<p>Add some instructions to the user ( println!("do that") ), The result will be :</p>
+<pre>----------------------------------------------------------------------------
+
+ --- Welcome to Rust Translator by Marwen Doukh - Mozilla Tunisia ---
+
+----------------------------------------------------------------------------
+Please enter the word you want to translate
+Hello Mozilla
+Please choose the language that you want to translate to (eg : choose en if you want English)
+
+ English : en
+
+ Arabic : ar
+
+ French : fr
+
+ German : de
+
+ ----------------------
+
+ Translate to :
+de
+translation is : "Hallo Mozilla" 
+translated from-to  : "fi-de"</pre>
+<p>This is it ! As easy as that !</p>
+<p>Many projects nowadays are made using Rust like  <a href="https://servo.org/" target="_blank">Servo</a> and the <a href="https://github.com/rust-lang/rust" target="_blank">Rust compiler</a> itself. Mozilla is working hard everyday to improve this programming language , you can help it by contributing , You'll shape the next version of Rust !</p>
+<p>To get the full source code of "Rust Translator", you can find it on <a href="https://github.com/marwendoukh/Rust-Translator" target="_blank">Github</a> . Feel free to change it !</p>
+
+</article>
+
+
+
+
+  <div class="py2 post-footer">
+  <p>
+    
+  </p>
+</div>
+
+
+
+
+
+
+  <h3 class="related-post-title">Related Posts</h3>
+  <ul class="related-posts">
+    
+    <li>
+      <a href="/2020/03/27/covid19-letat-de-la-connexion-internet-en-tunisie/" class="post-link">
+          #Covid19 : L’état de la connexion Internet en Tunisie
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2019/08/10/nutzen-keine-fb-app-weder-fb-messenger-meine-erfahrung/" class="post-link">
+          Nutzen Keine FB App, weder FB Messenger  : Meine Erfahrung
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/12/30/ilhem-ks-ruhe-in-frieden/" class="post-link">
+          Ilhem KS: Ruhe in Frieden
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/10/14/je-mehr-ich-weis-desto-mehr-weis-ich-dass-ich-nichts-weis/" class="post-link">
+          Je mehr ich weiß, desto mehr weiß ich, dass ich nichts weiß.
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/08/26/announcement-pulluptorefresh-is-here/" class="post-link">
+          Announcement: PullUpToRefresh is here !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/08/19/wir-sollten-den-plastikverbrauch-jetzt-begrenzen-oder-wir-werden-sterben/" class="post-link">
+          Wir sollten den plastikverbrauch jetzt begrenzen, oder ... Wir werden STERBEN !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/07/25/meine-gedanken-uber-das-neue-ios-12/" class="post-link">
+          Meine Gedanken über das neue iOS 12 !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/01/04/your-privacy-tools-for-2018/" class="post-link">
+          Your privacy tools for 2018
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2017/10/02/classroom-chat-is-ready/" class="post-link">
+          Say Hi to Classroom chat !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2017/10/01/mozillas-hard-work-is-paying-off/" class="post-link">
+          Mozilla's hard work is paying off
+      </a>
+    </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <div class="left">
+      <small>
+        &copy; 2020 Marwen Doukh
+      </small>
+    </div>
+    
+  </div>
+</footer>
+<script type="text/javascript">
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js")
+    }
+</script>
+
+</body>
+</html>

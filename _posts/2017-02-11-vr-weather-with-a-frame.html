@@ -1,0 +1,162 @@
+---
+layout: post
+title: VR weather with A-frame
+date: 2017-02-11 12:38:17.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Tutorial
+tags:
+- aframe
+- English
+- mozilla
+- VR
+meta:
+  switch_like_status: '1'
+  sharing_disabled: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  _publicize_job_id: '1740548883'
+author:
+  login: marwendoukh
+  email: marwen.doukh@gmail.com
+  display_name: Marwen Doukh
+  first_name: Marwen
+  last_name: Doukh
+permalink: "/2017/02/11/vr-weather-with-a-frame/"
+---
+<p><img class=" size-full wp-image-3282 aligncenter" src="{{ site.baseurl }}/assets/aframe-logo.png" alt="Aframe logo" width="300" height="264" /></p>
+<p>&nbsp;</p>
+<p><a href="https://aframe.io/" target="_blank">A-frame</a> is a Mozilla web framework for building Virtual Reality scenes. In this tutorial , we'll develop a web page that displays the weather's conditions and change the scene sky according to weather. (We will choose Ariana , Tunisia as an example).</p>
+<p><!--more--></p>
+<h2>What is Aframe ?</h2>
+<p>A-Frame is an open-source web framework by Mozilla that makes building virtual reality  (VR) experiences easier , with just HTML tags. It's build using <a href="http://threejs.org" target="_blank" rel="external">three.js</a> framework.</p>
+<h2>How to use it ?</h2>
+<p>You can develop a VR scene and open the web page you created with your browser .If you  are using your computer you move inside the scene by your mouse. If you are using your smartphone , install a VR compatible web browser like Firefox and move inside the scene by moving your phone (using your phone accelerometer ).</p>
+<h2>Let's start developing</h2>
+<p>We'll create a PHP file , and insert HTML tags according to the weather</p>
+<p>First , we should import the A-frame library , add this in your head tag</p>
+<pre>https://aframe.io/releases/0.5.0/aframe.min.js</pre>
+<p>As of writing this tutorial , this is the latest A-frame version.</p>
+<p>The head tag will be like</p>
+<pre> &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+
+        &lt;title&gt;Workshop webVR&lt;/title&gt;
+
+        &lt;meta name="description" content="VR weather"&gt;
+        &lt;meta name="author" content="Marwen Doukh"&gt;
+
+&lt;!--get the Aframe library--&gt;
+<a href="https://aframe.io/releases/0.5.0/aframe.min.js">https://aframe.io/releases/0.5.0/aframe.min.js</a>
+
+    &lt;/head&gt;</pre>
+<p>Now , we'll call the weather web service , get the result and transform it to a JSON object.</p>
+<p>We'll get the weather from openweathermap.org , I already got an API key (you can use it, don't bother yourself by creating an account and requesting a new one)</p>
+<p>The web service link would be</p>
+<pre>http://api.openweathermap.org/data/2.5/weather?q=ariana,tn&amp;appid=2156e2dd5b92590ab69c0ae1b2d24586&amp;units=metric</pre>
+<p>it will display the weather for Ariana , Tunisia (q=ariana,tn) , and return the temperature in Celsius (units=metric).</p>
+<p>Open this link if your browser , and you'll see what the web service returns.</p>
+<p>To do so , we have to add this inside the body tag</p>
+<pre>&lt;?php
+///////////////////////////////// weather ////////////////////////////////////////////////
+
+/// get the response from the weather web service/////////
+    $response = file_get_contents('http://api.openweathermap.org/data/2.5/weather?q=ariana,tn&amp;appid=2156e2dd5b92590ab69c0ae1b2d24586&amp;units=metric');
+
+    //// transform the web service response to a JSON object
+
+    $weatherObject = json_decode($response);
+
+
+    ?&gt;</pre>
+<p>the weatherObject is the JSON object that contains all the weather information.</p>
+<p>To print the temperature and weather condition inside our web page , we'll use</p>
+<p>the following A-frame tag</p>
+<pre>&lt;!--print the weather in a Aframe text --&gt;
+        &lt;a-entity  text="width: 20; value:&lt;?php echo $weatherObject-&gt;name?&gt; \n \n &lt;?php echo $weatherObject-&gt;main-&gt;temp?&gt; °C \n \n &lt;?php echo $weatherObject-&gt;weather[0]-&gt;description?&gt;"&gt;&lt;/a-entity&gt;</pre>
+<p>Inside the text attribute , we'll echo (print) the country,temperature and the weather description.</p>
+<p>Once , we did that , let's change the sky color (background) according to weather's conditions. add this to your PHP file</p>
+<pre>&lt;?php
+// change the sky ("background") according to the weather's conditions
+
+if($weatherObject-&gt;weather[0]-&gt;main=="Clouds")
+{
+
+    echo"    &lt;a-sky color=\"#424242\"&gt;&lt;/a-sky&gt;";
+}
+    else if($weatherObject-&gt;weather[0]-&gt;main=="Rain")
+    {
+        echo"    &lt;a-sky color=\"#039be5\"&gt;&lt;/a-sky&gt;";
+
+    }
+    else if($weatherObject-&gt;weather[0]-&gt;main=="Snow")
+    {
+        echo"    &lt;a-sky color=\"#e0e0e0\"&gt;&lt;/a-sky&gt;";
+
+    }
+
+?&gt;</pre>
+<p>Finally , we position the camera (the point of view)</p>
+<pre>&lt;a-entity position="-8 -2 3.8"&gt;
+&lt;a-camera&gt;&lt;/a-camera&gt;
+&lt;/a-entity&gt;</pre>
+<p>The final source code for body tag , is</p>
+<pre>&lt;body&gt;
+
+&lt;?php
+///////////////////////////////// weather ////////////////////////////////////////////////
+
+/// get the response from the weather web service/////////
+    $response = file_get_contents('http://api.openweathermap.org/data/2.5/weather?q=ariana,tn&amp;appid=2156e2dd5b92590ab69c0ae1b2d24586&amp;units=metric');
+
+    //// transform the web service response to a JSON object
+
+    $weatherObject = json_decode($response);
+
+
+    ?&gt;
+    &lt;a-scene&gt;
+&lt;!--print the weather in a Aframe text --&gt;
+        &lt;a-entity  text="width: 20; value:&lt;?php echo $weatherObject-&gt;name?&gt; \n \n &lt;?php echo $weatherObject-&gt;main-&gt;temp?&gt; °C \n \n &lt;?php echo $weatherObject-&gt;weather[0]-&gt;description?&gt;"&gt;&lt;/a-entity&gt;
+
+
+&lt;?php
+// change the sky ("background") according to the weather's conditions
+
+if($weatherObject-&gt;weather[0]-&gt;main=="Clouds")
+{
+
+    echo"    &lt;a-sky color=\"#424242\"&gt;&lt;/a-sky&gt;";
+}
+    else if($weatherObject-&gt;weather[0]-&gt;main=="Rain")
+    {
+        echo"    &lt;a-sky color=\"#039be5\"&gt;&lt;/a-sky&gt;";
+
+    }
+    else if($weatherObject-&gt;weather[0]-&gt;main=="Snow")
+    {
+        echo"    &lt;a-sky color=\"#e0e0e0\"&gt;&lt;/a-sky&gt;";
+
+    }
+
+?&gt;
+
+&lt;a-entity position="-8 -2 3.8"&gt;
+&lt;a-camera&gt;&lt;/a-camera&gt;
+&lt;/a-entity&gt;
+&lt;/a-scene&gt;
+
+&lt;/body&gt;</pre>
+<p>&nbsp;</p>
+<h2>Let's test it</h2>
+<p>To test what we've done , put the PHP file in WWW folder (you should install <a href="http://www.wampserver.com/en/" target="_blank">WAMP</a> if you are on Windows)</p>
+<p>Then open it from your browser</p>
+<p>[caption id="attachment_3274" align="aligncenter" width="1366"]<img class="alignnone size-full wp-image-3274" src="{{ site.baseurl }}/assets/vr-weather.png" alt="VR weather" width="1366" height="768" /> VR weather[/caption]</p>
+<p>&nbsp;</p>
+<p>Move inside the scene , by moving your mouse (if you're using a computer) , or by moving your phone .</p>
+<p>&nbsp;</p>
+<h3>You can get the full source code from <a href="https://github.com/marwendoukh/VR-weather" target="_blank">here</a> .</h3>
