@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bluemix : Connect IBM DashDB to IBM Cognos Analytics &#8211; Marwen Doukh</title>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="This is my personal blog. Marwen Doukh">
+    <meta name="robots" content="all">
+    <meta name="author" content="Marwen Doukh">
+    <meta name="keywords" content="Tutorial">
+    <link rel="canonical" href="http://localhost:4000/2017/02/13/bluemix-connect-ibm-dashdb-to-ibm-cognos-analytics/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Marwen Doukh" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css?202005311544" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Bluemix : Connect IBM DashDB to IBM Cognos Analytics">
+    <meta property="og:description" content="This is my personal blog. Marwen Doukh">
+    <meta property="og:url" content="http://localhost:4000/2017/02/13/bluemix-connect-ibm-dashdb-to-ibm-cognos-analytics/">
+    <meta property="og:site_name" content="Marwen Doukh">
+    
+    <meta property="og:image" content="http://localhost:4000/images/me.jpeg">
+    
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+    <meta name="twitter:title" content="Bluemix : Connect IBM DashDB to IBM Cognos Analytics" />
+    <meta name="twitter:description" content="This is my personal blog. Marwen Doukh" />
+    <meta name="twitter:url" content="http://localhost:4000/2017/02/13/bluemix-connect-ibm-dashdb-to-ibm-cognos-analytics/" />
+    
+    <meta name="twitter:image" content="http://localhost:4000/images/me.jpeg" />
+    
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+</head>
+
+<body class="site animated fade-in-down">
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Marwen Doukh</a>
+      <nav class="site-nav">
+        
+
+
+
+    
+    
+    
+    
+        <a class="nav-link" href="/about">Home</a>
+    
+
+    
+
+    
+    
+    
+    
+
+    
+
+
+      </nav>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Bluemix : Connect IBM DashDB to IBM Cognos Analytics</h1>
+  <span class="post-meta">Feb 13, 2017 |</span>
+  
+  <span class="post-meta small">
+  
+    2 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <p><img class=" size-full wp-image-3400 aligncenter" src="/assets/ibm-cognos-analytics-logo.jpg" alt="IBM Cognos Analytics logo" width="400" height="208" /></p>
+<p>Cognos Analytics is an IBM Business Intelligence tool that you can use to interpret your data and extract relevant information for your Database.In this tutorial , we will add a new data source to Cognos Analytics , from DashDB , and create charts. Let's get started !</p>
+<p><!--more--></p>
+<h2>What is DashDB ?</h2>
+<p>DashDB is a data warehouse developed by IBM that you can use to gather data from different databases and different sources.</p>
+<h2>Connect DashDB to Cognos Analytics</h2>
+<p>Connect to your Cognos account and click "manage" (in the bottom left) .</p>
+<p>[caption id="attachment_3355" align="aligncenter" width="677"]<img class="alignnone  wp-image-3355" src="/assets/click-manage.png" alt="IBM Cognos : Click manage" width="677" height="296" /> Click manage[/caption]</p>
+<p>Then , click "Data server connections"</p>
+<p>[caption id="attachment_3359" align="aligncenter" width="675"]<img class="alignnone  wp-image-3359" src="/assets/ibm-cognos-click-data-server-connections.png" alt="IBM Cognos : click data server connections" width="675" height="294" /> Click data server connections[/caption]</p>
+<p>Click the + button and choose DashDB</p>
+<p>[caption id="attachment_3363" align="aligncenter" width="1366"]<img class="alignnone size-full wp-image-3363" src="/assets/ibm-cognos-choose-dashdb.png" alt="ibm-cognos-choose-dashdb" width="1366" height="592" /> Choose DashDB[/caption]</p>
+<p>Now , we have to enter the DashDB credentials , so go to your DashDB dashboard , click "connect" and copy , paste the required fields . (copy Host name and paste it in "Server")</p>
+<p>[caption id="attachment_3366" align="aligncenter" width="1364"]<img class="alignnone size-full wp-image-3366" src="/assets/ibm-cognos-copy-your-credentials.png" alt="IBM Cognos : Copy your credentials" width="1364" height="591" /> Copy your credentials[/caption]</p>
+<p>When you're done , test if the connection can be established by clicking "test" , you should see this</p>
+<p>[caption id="attachment_3369" align="aligncenter" width="573"]<img class="alignnone size-full wp-image-3369" src="/assets/ibm-cognos-test-the-connection.png" alt="IBM Cognos : Test the connection" width="573" height="141" /> Test the connection[/caption]</p>
+<p>After clicking the "Ok" button , click on the database you just created .</p>
+<p>Then click on your connection name , and next to your schema name (DashDB table name) , click "Load metadata"</p>
+<p>[caption id="attachment_3373" align="aligncenter" width="1364"]<img class="alignnone size-full wp-image-3373" src="/assets/ibm-cognos-load-metadata.png" alt="IBM Cognos : load metadata" width="1364" height="589" /> Load metadata[/caption]</p>
+<p>As of now , we successfully connected Cognos to DashDB . The next step is to create a new data source for Cognos , it will get data from the server connection we just created .</p>
+<p>Click the + button and choose "Data module"</p>
+<p>[caption id="attachment_3376" align="aligncenter" width="1363"]<img class="alignnone size-full wp-image-3376" src="/assets/ibm-cognos-create-a-new-data-module.png" alt="IBM Cognos : Create a new data module" width="1363" height="588" /> Create a new data module[/caption]</p>
+<p>Click "Data servers", then choose the "Data server" we just created .After that check the schema (DashDB table name) , and finally click "Start".</p>
+<p>[caption id="attachment_3379" align="aligncenter" width="1364"]<img class="alignnone size-full wp-image-3379" src="/assets/ibm-cognos-setup-data-module.png" alt="IBM Cognos : Setup data module" width="1364" height="591" /> Setup data module[/caption]</p>
+<p>Expand the "Data sources" , then drag and drop the table name you want to work on. Click "save" (on the top left).</p>
+<p>Tip: Save it in "My content" folder to make it easier to find it later.</p>
+<p>[caption id="attachment_3382" align="aligncenter" width="1366"]<img class="alignnone size-full wp-image-3382" src="/assets/ibm-cognos-save-data-module.png" alt="IBM Cognos : Save data module" width="1366" height="589" /> Save data module[/caption]</p>
+<p>Everything now is well set up . To use those data , add a new Dashboard</p>
+<p>[caption id="attachment_3385" align="aligncenter" width="1363"]<img class="alignnone size-full wp-image-3385" src="/assets/ibm-cognos-add-new-dashboard.png" alt="IBM Cognos : Add new Dashboard" width="1363" height="591" /> Add new Dashboard[/caption]</p>
+<p>In the new dashboard , we need to choose the data we want to process , so click the "+" button and choose the data source we just created (if you followed my tip , you'll find it in "My content" folder ;)  ).</p>
+<p>[caption id="attachment_3388" align="aligncenter" width="1364"]<img class="alignnone size-full wp-image-3388" src="/assets/ibm-cognos-add-data-source-to-dashboard.png" alt="IBM Cognos : Add data source to Dashboard" width="1364" height="594" /> Add data source to Dashboard[/caption]</p>
+<p>Finally , you can create your charts and process the DashDB data.Just drag and drop the values from your data source into your charts.</p>
+<p>[caption id="attachment_3392" align="aligncenter" width="1364"]<img class="alignnone size-full wp-image-3392" src="/assets/ibm-cognos-add-charts.png" alt="ibm-cognos-add-charts" width="1364" height="591" /> Add charts[/caption]</p>
+<p>Enjoy !</p>
+<p>Don't forget to save your Dashboard , so you can consult it in the future.</p>
+<h2>Charts</h2>
+<p>In my project , I get data from sensors and I can see the temperature , humidity , noise values over time and I can also notice that the average temperature dropped dramatically while other values remained stable at a certain point of time.</p>
+<p>[caption id="attachment_3396" align="aligncenter" width="1364"]<img class="alignnone size-full wp-image-3396" src="/assets/ibm-cognos-charts.png" alt="IBM Cognos : Charts" width="1364" height="592" /> IBM Cognos : Charts[/caption]</p>
+
+</article>
+
+
+
+
+  <div class="py2 post-footer">
+  <p>
+    
+  </p>
+</div>
+
+
+
+
+
+
+  <h3 class="related-post-title">Related Posts</h3>
+  <ul class="related-posts">
+    
+    <li>
+      <a href="/2020/03/27/covid19-letat-de-la-connexion-internet-en-tunisie/" class="post-link">
+          #Covid19 : L’état de la connexion Internet en Tunisie
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2019/08/10/nutzen-keine-fb-app-weder-fb-messenger-meine-erfahrung/" class="post-link">
+          Nutzen Keine FB App, weder FB Messenger  : Meine Erfahrung
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/12/30/ilhem-ks-ruhe-in-frieden/" class="post-link">
+          Ilhem KS: Ruhe in Frieden
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/10/14/je-mehr-ich-weis-desto-mehr-weis-ich-dass-ich-nichts-weis/" class="post-link">
+          Je mehr ich weiß, desto mehr weiß ich, dass ich nichts weiß.
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/08/26/announcement-pulluptorefresh-is-here/" class="post-link">
+          Announcement: PullUpToRefresh is here !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/08/19/wir-sollten-den-plastikverbrauch-jetzt-begrenzen-oder-wir-werden-sterben/" class="post-link">
+          Wir sollten den plastikverbrauch jetzt begrenzen, oder ... Wir werden STERBEN !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/07/25/meine-gedanken-uber-das-neue-ios-12/" class="post-link">
+          Meine Gedanken über das neue iOS 12 !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/01/04/your-privacy-tools-for-2018/" class="post-link">
+          Your privacy tools for 2018
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2017/10/02/classroom-chat-is-ready/" class="post-link">
+          Say Hi to Classroom chat !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2017/10/01/mozillas-hard-work-is-paying-off/" class="post-link">
+          Mozilla's hard work is paying off
+      </a>
+    </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <div class="left">
+      <small>
+        &copy; 2020 Marwen Doukh
+      </small>
+    </div>
+    
+  </div>
+</footer>
+<script type="text/javascript">
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js")
+    }
+</script>
+
+</body>
+</html>

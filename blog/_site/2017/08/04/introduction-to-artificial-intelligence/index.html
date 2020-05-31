@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Introduction to Artificial Intelligence &#8211; Marwen Doukh</title>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="This is my personal blog. Marwen Doukh">
+    <meta name="robots" content="all">
+    <meta name="author" content="Marwen Doukh">
+    <meta name="keywords" content="Get to know">
+    <link rel="canonical" href="http://localhost:4000/2017/08/04/introduction-to-artificial-intelligence/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Marwen Doukh" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css?202005311544" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Introduction to Artificial Intelligence">
+    <meta property="og:description" content="This is my personal blog. Marwen Doukh">
+    <meta property="og:url" content="http://localhost:4000/2017/08/04/introduction-to-artificial-intelligence/">
+    <meta property="og:site_name" content="Marwen Doukh">
+    
+    <meta property="og:image" content="http://localhost:4000/images/me.jpeg">
+    
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+    <meta name="twitter:title" content="Introduction to Artificial Intelligence" />
+    <meta name="twitter:description" content="This is my personal blog. Marwen Doukh" />
+    <meta name="twitter:url" content="http://localhost:4000/2017/08/04/introduction-to-artificial-intelligence/" />
+    
+    <meta name="twitter:image" content="http://localhost:4000/images/me.jpeg" />
+    
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+</head>
+
+<body class="site animated fade-in-down">
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="/" class="site-title">Marwen Doukh</a>
+      <nav class="site-nav">
+        
+
+
+
+    
+    
+    
+    
+        <a class="nav-link" href="/about">Home</a>
+    
+
+    
+
+    
+    
+    
+    
+
+    
+
+
+      </nav>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Introduction to Artificial Intelligence</h1>
+  <span class="post-meta">Aug 4, 2017 |</span>
+  
+  <span class="post-meta small">
+  
+    4 minute read
+  
+  </span>
+</div>
+
+<article class="post-content">
+  <p>Artificial Intelligence have become one of the most important and interesting topics over the past few years , it gave computers the ability to "think" and to be "intelligent" . Unlike "old" programs and algorithms in which you should define and deal with every condition , AI algorithms can predict the action based on a training . What is AI ? What is Machine Learning ? What is Artificial Neural Network ? How could we train it ?</p>
+<p><!--more--></p>
+<h2>Before the AI era</h2>
+<p>In old programs , the output does not change over time and does not learn from training . Every thing should be written in the source code , every input should be included in the program . Whenever you have a new or a change in your input , you should update your program . This can be a huge problem when dealing with data and input that change frequently , specially if you could not predict them .</p>
+<p>Let's take the following example :</p>
+<p>You have program that take the model and the speed of a car as an input and gives you fuel consumption as output . How could you develop this program ?</p>
+<p>Let's think for a minute ...</p>
+<p>We have to manage all the models , and for every model all the possible car's speed ! This is very hard ! and unfeasible !</p>
+<p>Artificial Intelligence will solve this problem ! Congrats !</p>
+<h2>What is Artificial Intelligence ?</h2>
+<p>An AI , is a program that given an input , it'll predict the output , even if it doesn't know any think about that specific input (It doesn't know fuel consumption of this specific model at this specific speed) ! How it predict that ?</p>
+<h2>What is Machine Learning?</h2>
+<p>To build an Artificial Intelligence program , you have to train it using examples (many real car's consumption) . This way , your program will learn from this data and try to understand how car's consumption increase according to speed and car's model . The more data you give to your program , the more accurate it'll be : All this without any change in source code .So , how machine learning works ? How your program learn ?</p>
+<p>Well ! It will do a Linear Regression to draw a line that cross the majority of points, like the following image :</p>
+<p>&nbsp;</p>
+<p>[caption id="attachment_3484" align="aligncenter" width="800"]<img class="alignnone size-full wp-image-3484" src="/assets/linearregression.png" alt="Linear Regression" width="800" height="600" /> Linear Regression[/caption]</p>
+<p>For example :</p>
+<ul>
+<li>X : represents car's speed .</li>
+<li>Y: represents fuel consumption.</li>
+</ul>
+<h2>What is Artificial Neural Network ?</h2>
+<p>Machine Learning is how to train our program to learn about our data .As we've seen earlier , Linear Regression is one of the methods to do that .</p>
+<p>Artificial Neural Network is a new technique in machine learning that is inspired by human neurons. It is composed by "neurons" which has inputs and according to the input it calculates a value as an output .</p>
+<p>Back the our example , to solve our issue we have to build an ANN that have 2 inputs :car model and car speed and 1 output : the fuel consumption . How to train it in order to predict the fuel consumption ?</p>
+<h2>How to train an Artificial Neural Network ?</h2>
+<p>There are two best tools to build and then train an ANN (Artificial Neural Network):</p>
+<p>-<a href="http://scikit-learn.org" target="_blank" rel="noopener">Scikit</a></p>
+<p>-<a href="https://www.tensorflow.org" target="_blank" rel="noopener">TensorFlow</a> : developed by Google for building advanced algorithms.</p>
+<p>In our example , we should then build an ANN with 2 inputs , 1 output and we give it as many data as we can to train it . As we mentioned above , the neuron output depends on its input , so in each learning round (epochs) the output for the same input change to become more accurate .What !</p>
+<p>I'll explain . Let's say in round 1 (the first epoch) , the output of the neuron is calculated according to the following equation :</p>
+<p>0.4*input1+0.2*input2 = output</p>
+<p>This will give an accuracy ,for example, of 70% of our ANN  .</p>
+<p>In the second epoch , the ANN will try to improve the accuracy by changing the first equation , so it'll be for example :</p>
+<p>0.46*input1+0.199*input2 = output</p>
+<p>Giving this equation , the ANN will have an accuracy of 75% , so our ANN improved itself by learning from each epoch and each input.</p>
+<p>In each epoch , our ANN calculates the accuracy of the model and tries to improve it in the next epoch . (You could set the number of epoch as you want).</p>
+<h2>To conclude</h2>
+<p>AI is the evolution of computer algorithms that will surely help Humans make better decisions and to predict many things . Many big companies already started using AI in their products , like Google assistant , Alexa (Amazon) , Google search engine ...</p>
+<p>I am pretty sure that we will see AI in more products and programs in the near future , hoping that it will beneficial for the end user .</p>
+
+</article>
+
+
+
+
+  <div class="py2 post-footer">
+  <p>
+    
+  </p>
+</div>
+
+
+
+
+
+
+  <h3 class="related-post-title">Related Posts</h3>
+  <ul class="related-posts">
+    
+    <li>
+      <a href="/2020/03/27/covid19-letat-de-la-connexion-internet-en-tunisie/" class="post-link">
+          #Covid19 : L’état de la connexion Internet en Tunisie
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2019/08/10/nutzen-keine-fb-app-weder-fb-messenger-meine-erfahrung/" class="post-link">
+          Nutzen Keine FB App, weder FB Messenger  : Meine Erfahrung
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/12/30/ilhem-ks-ruhe-in-frieden/" class="post-link">
+          Ilhem KS: Ruhe in Frieden
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/10/14/je-mehr-ich-weis-desto-mehr-weis-ich-dass-ich-nichts-weis/" class="post-link">
+          Je mehr ich weiß, desto mehr weiß ich, dass ich nichts weiß.
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/08/26/announcement-pulluptorefresh-is-here/" class="post-link">
+          Announcement: PullUpToRefresh is here !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/08/19/wir-sollten-den-plastikverbrauch-jetzt-begrenzen-oder-wir-werden-sterben/" class="post-link">
+          Wir sollten den plastikverbrauch jetzt begrenzen, oder ... Wir werden STERBEN !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/07/25/meine-gedanken-uber-das-neue-ios-12/" class="post-link">
+          Meine Gedanken über das neue iOS 12 !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2018/01/04/your-privacy-tools-for-2018/" class="post-link">
+          Your privacy tools for 2018
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2017/10/02/classroom-chat-is-ready/" class="post-link">
+          Say Hi to Classroom chat !
+      </a>
+    </li>
+    
+    <li>
+      <a href="/2017/10/01/mozillas-hard-work-is-paying-off/" class="post-link">
+          Mozilla's hard work is paying off
+      </a>
+    </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <div class="left">
+      <small>
+        &copy; 2020 Marwen Doukh
+      </small>
+    </div>
+    
+  </div>
+</footer>
+<script type="text/javascript">
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js")
+    }
+</script>
+
+</body>
+</html>
